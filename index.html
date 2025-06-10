@@ -210,9 +210,13 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
   <img id="jun" src="images/Jun.gif" style="width: 160px; cursor: pointer; outline: none; border: none;" />
 </div>
 
-<p> El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.
+<p> El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.</p>
 
-Decidme, viajera:
+<div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+<img id="dic" src="images/Dic.gif" style="width: 180px; margin-top: 10px; cursor: pointer;" />
+</div>
+
+<p>Decidme, viajera:
 ¿Qué une a estos tres momentos en los que la rueda celeste cambia?
     </p>
 
@@ -295,6 +299,18 @@ Decidme, viajera:
     }, 1500); // Ajusta el tiempo para que coincida con la duración de Jun1.gif
   });
 </script>
+
+<script>
+  const dicImg = document.getElementById("dic");
+
+  dicImg.addEventListener("click", () => {
+    dicImg.src = "images/Dic1.gif"; // animación
+    setTimeout(() => {
+      dicImg.src = "images/Dic.gif"; // vuelve al original
+    }, 1000); // 1000 ms = 1 segundo
+  });
+</script>
+
 
 </body>
 </html>
