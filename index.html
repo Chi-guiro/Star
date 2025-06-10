@@ -37,50 +37,21 @@
       margin: 0 auto;
     }
 
-    @media (max-width: 600px) {
-      p {
-        font-size: 13px;
-      }
-
-      h2 {
-        font-size: 14px;
-      }
-
-      .viento-img {
-        width: 60px;
-      }
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
-    #felicitacion {
-      display: none;
-      margin-top: 30px;
-    }
-
-    .input-line {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .input-line input {
-      width: 60px;
-      font-size: 24px;
-      text-align: center;
-      padding: 8px;
-      font-family: 'Press Start 2P', sans-serif;
-    }
-
-    .imagenes-linea {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      margin-top: 20px;
+    .viento-img {
+      width: 100px;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
     }
 
     .imagen-acierto {
-      width: 250px;
-      height: auto;
+      width: 100%;
+      max-width: 250px;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -115,11 +86,33 @@
       margin-bottom: 20px;
     }
 
-    .viento-img {
-      width: 100px;
-      height: auto;
-      user-select: none;
-      pointer-events: none;
+    .imagenes-linea {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    #felicitacion {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .input-line {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .input-line input {
+      width: 60px;
+      font-size: 24px;
+      text-align: center;
+      padding: 8px;
+      font-family: 'Press Start 2P', sans-serif;
     }
 
     .click-gif {
@@ -139,6 +132,45 @@
       100% {
         opacity: 0;
         transform: scale(1.4);
+      }
+    }
+
+    /* RESPONSIVE: Ajustes para pantallas pequeñas */
+    @media (max-width: 600px) {
+      p {
+        font-size: 13px;
+      }
+
+      h2 {
+        font-size: 14px;
+      }
+
+      .viento-img {
+        width: 60px;
+      }
+
+      .npc-linea {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .npc-img {
+        width: 80px;
+      }
+
+      .imagenes-linea {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .imagen-acierto {
+        max-width: 90%;
+      }
+
+      .input-line input {
+        font-size: 20px;
+        width: 50px;
       }
     }
   </style>
@@ -163,15 +195,11 @@ Cuando el trono alza su cetro, la serpiente plateada se desliza hacia el sur.
 
 Tres veces al año, la rueda celeste murmura.
 
-El Primero llega con los tambores ocultos bajo la tierra,
-cuando los que duermen en raíces despiertan,
-y los montes, envueltos en manto esmeralda, se alzan como guardianes.
+El Primero llega con los tambores ocultos bajo la tierra, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.
 
-El Segundo se presenta como un respiro en medio de la tempestad, 
-inesperado, como si el ojo de fuego quisiera recordar su reinado.
+El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado.
 
-El Tercero desciende con paso firme y silbido constante,
-su andar levanta hojas, zarandea las almas, y marca el inicio de la escasez.
+El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.
 
 Decidme, viajera:
 ¿Qué une a estos tres momentos en los que la rueda celeste cambia?
