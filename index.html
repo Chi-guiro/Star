@@ -197,9 +197,13 @@ Tres veces al año, la rueda celeste murmura.
 
 El Primero llega con los tambores ocultos bajo la tierra, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.
 
-El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado.
+El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado. </p>
 
-El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.
+<div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+  <img id="jun" src="images/Jun.gif" style="width: 140px; cursor: pointer;" />
+</div>
+
+<p> El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.
 
 Decidme, viajera:
 ¿Qué une a estos tres momentos en los que la rueda celeste cambia?
@@ -267,5 +271,23 @@ Decidme, viajera:
       }, 600);
     });
   </script>
+
+<script>
+  const jun = document.getElementById("jun");
+  let cambiando = false;
+
+  jun.addEventListener("click", () => {
+    if (cambiando) return; // Evita múltiples clics
+    cambiando = true;
+
+    jun.src = "images/Jun1.gif";
+
+    setTimeout(() => {
+      jun.src = "images/Jun.gif";
+      cambiando = false;
+    }, 1500); // Ajusta el tiempo para que coincida con la duración de Jun1.gif
+  });
+</script>
+
 </body>
 </html>
