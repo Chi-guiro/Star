@@ -209,22 +209,20 @@ El Primero llega con los tambores desde el manto gris, cuando los que duermen en
   <img id="abr" src="images/Abr.gif" style="width: 160px; cursor: pointer; outline: none; border: none;" />
 </div>
 
-<p>
-El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado. </p>
+<p>El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado.</p>
 
 <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
   <img id="jun" src="images/Jun.gif" style="width: 160px; cursor: pointer; outline: none; border: none;" />
 </div>
 
-<p> El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.</p>
+<p>El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.</p>
 
 <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
 <img id="dic" src="images/Dic.gif" style="width: 180px; margin-top: 10px; cursor: pointer;  outline: none; border: none" />
 </div>
 
 <p>Decidme, viajera:
-¿Qué une a estos tres momentos en los que la rueda celeste cambia?
-    </p>
+¿Qué une a estos tres momentos en los que la rueda celeste cambia?</p>
 
     <div class="input-line">
       <input id="campo1" />
@@ -315,19 +313,22 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
   const abr = document.getElementById("abr");
   const abrAlternativas = ["images/Abr1.gif", "images/Abr2.gif", "images/Abr3.gif"];
   let abrCambiando = false;
+  let abrIndice = 0;
 
   abr.addEventListener("click", () => {
     if (abrCambiando) return;
     abrCambiando = true;
 
-    const gifAleatorio = abrAlternativas[Math.floor(Math.random() * abrAlternativas.length)];
+    // Seleccionar el gif en orden
+    const gif = abrAlternativas[abrIndice];
+    abrIndice = (abrIndice + 1) % abrAlternativas.length; // avanzar circularmente
 
-    abr.src = gifAleatorio;
+    abr.src = gif;
 
     setTimeout(() => {
       abr.src = "images/Abr.gif";
       abrCambiando = false;
-    }, 1500); 
+    }, 1500); // ajusta duración si lo necesitas
   });
 </script>
 
