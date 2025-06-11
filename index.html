@@ -143,6 +143,29 @@ img {
   outline: none;
 }
   </style>
+ <style>
+    .preload {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
+  <div class="preload">
+    <!-- GIFs -->
+    <img src="images/elemental1.gif" alt="">
+    <img src="images/elemental2.gif" alt="">
+    <img src="images/elemental3.gif" alt="">
+
+    <!-- PNGs -->
+    <img src="images/elemental1.png" alt="">
+    <img src="images/elemental2.png" alt="">
+    <img src="images/elemental3.png" alt="">
+  </div>
+
 </head>
 
 <body oncontextmenu="return false;">
@@ -213,23 +236,32 @@ El Primero llega con los tambores desde el manto gris, cuando los que duermen en
       document.getElementById(entry.id).addEventListener("input", verificar);
     });
 
-    function verificar() {
-      let aciertos = 0;
+   function verificar() {
+  let aciertos = 0;
 
-      inputs.forEach(entry => {
-        const val = document.getElementById(entry.id).value.trim();
-        const img = document.getElementById(entry.imgId);
+  inputs.forEach(entry => {
+    const val = document.getElementById(entry.id).value.trim();
+    const img = document.getElementById(entry.imgId);
 
-        if (val === entry.valor) {
-          img.classList.add("imagen-visible");
-          aciertos++;
-        } else {
-          img.classList.remove("imagen-visible");
-        }
-      });
+    if (val === entry.valor) {
+      if (!img.classList.contains("imagen-visible")) {
+        img.src = `images/${entry.imgId.replace('img', 'elemental')}.gif`;
+        img.classList.add("imagen-visible");
 
-      document.getElementById("felicitacion").style.display = aciertos === 3 ? "block" : "none";
+        // Cambiar a la versión estática luego de 1500ms
+        setTimeout(() => {
+          img.src = `images/${entry.imgId.replace('img', 'elemental')}.png`;
+        }, 1500);
+      }
+      aciertos++;
+    } else {
+      img.classList.remove("imagen-visible");
     }
+  });
+
+  document.getElementById("felicitacion").style.display = aciertos === 3 ? "block" : "none";
+}
+
   </script>
 
   <script>
@@ -288,7 +320,7 @@ El Primero llega con los tambores desde el manto gris, cuando los que duermen en
     setTimeout(() => {
       abr.src = "images/Abr.gif";
       abrCambiando = false;
-    }, 1500); // ajusta duración si lo necesitas
+    }, 1400); 
   });
 </script>
 
