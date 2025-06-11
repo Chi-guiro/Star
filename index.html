@@ -286,19 +286,25 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
 <script>
   const jun = document.getElementById("jun");
   let cambiando = false;
+  let alternar = false; // alterna entre Jun1 y Jun2
 
   jun.addEventListener("click", () => {
-    if (cambiando) return; // Evita múltiples clics
+    if (cambiando) return;
     cambiando = true;
 
-    jun.src = "images/Jun1.gif";
+    const gif = alternar ? "images/Jun1.gif" : "images/Jun2.gif";
+    const duracion = alternar ? 1200 : 2450; // duración exacta
+    alternar = !alternar;
+
+    jun.src = gif;
 
     setTimeout(() => {
       jun.src = "images/Jun.gif";
       cambiando = false;
-    }, 1500); // Ajusta el tiempo para que coincida con la duración de Jun1.gif
+    }, duracion);
   });
 </script>
+
 
 <script>
   const dicImg = document.getElementById("dic");
