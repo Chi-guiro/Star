@@ -202,8 +202,17 @@ Cuando el trono alza su cetro, la serpiente plateada se desliza hacia el sur.
 
 Tres veces al año, la rueda celeste murmura.
 
-El Primero llega con los tambores ocultos bajo la tierra, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.
+El Primero llega con los tambores ocultos bajo la tierra, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.</p>
 
+
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <div style="position: relative;">
+    <img id="abr" src="images/Abr.gif" style="width: 180px; cursor: pointer;" />
+    <img id="abrAnim" src="" style="position: absolute; left: 170px; top: 0; transform: scale(1.5); display: none;" />
+  </div>
+</div>
+
+<p>
 El Segundo se presenta como un respiro en medio de la tempestad, inesperado, como si el ojo de fuego quisiera recordar su reinado. </p>
 
 <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
@@ -313,7 +322,30 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
     dicImg.src = "images/Dic1.gif"; // animación
     setTimeout(() => {
       dicImg.src = "images/Dic.gif"; // vuelve al original
-    }, 1000); // 1000 ms = 1 segundo
+    }, 2000);
+  });
+</script>
+
+<script>
+  const abr = document.getElementById("abr");
+  const abrAnim = document.getElementById("abrAnim");
+  let alternarAbr = false;
+  let animandoAbr = false;
+
+  abr.addEventListener("click", () => {
+    if (animandoAbr) return;
+    animandoAbr = true;
+
+    const gif = alternarAbr ? "images/Abr1.gif" : "images/Abr2.gif";
+    const duracion = alternarAbr ? 1600 : 1600;
+    abrAnim.src = gif;
+    abrAnim.style.display = "block";
+    alternarAbr = !alternarAbr;
+
+    setTimeout(() => {
+      abrAnim.style.display = "none";
+      animandoAbr = false;
+    }, duracion);
   });
 </script>
 
