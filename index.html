@@ -299,7 +299,7 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
     cambiando = true;
 
     const gif = alternar ? "images/Jun1.gif" : "images/Jun2.gif";
-    const duracion = alternar ? 1200 : 2450; // duración exacta
+    const duracion = alternar ? 1200 : 2450; 
     alternar = !alternar;
 
     jun.src = gif;
@@ -320,7 +320,6 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
     if (abrCambiando) return;
     abrCambiando = true;
 
-    // Elegir una alternativa aleatoria
     const gifAleatorio = abrAlternativas[Math.floor(Math.random() * abrAlternativas.length)];
 
     abr.src = gifAleatorio;
@@ -328,7 +327,26 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
     setTimeout(() => {
       abr.src = "images/Abr.gif";
       abrCambiando = false;
-    }, 1500); // Ajusta si los gif duran más o menos
+    }, 1500); 
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dic = document.getElementById("dic");
+    let dicCambiando = false;
+
+    dic.addEventListener("click", () => {
+      if (dicCambiando) return;
+      dicCambiando = true;
+
+      dic.src = "images/Dic1.gif";
+
+      setTimeout(() => {
+        dic.src = "images/Dic.gif";
+        dicCambiando = false;
+      }, 1600);
+    });
   });
 </script>
 
