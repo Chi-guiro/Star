@@ -202,14 +202,11 @@ Cuando el trono alza su cetro, la serpiente plateada se desliza hacia el sur.
 
 Tres veces al año, la rueda celeste murmura.
 
-El Primero llega con los tambores ocultos bajo la tierra, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.</p>
+El Primero llega con los tambores desde el manto gris, cuando los que duermen en raíces despiertan, y los montes, envueltos en manto esmeralda, se alzan como guardianes.</p>
 
 
-<div style="display: flex; justify-content: center; margin-top: 20px;">
-  <div style="position: relative;">
-    <img id="abr" src="images/Abr.gif" style="width: 180px; cursor: pointer;" />
-    <img id="abrAnim" src="" style="position: absolute; left: 170px; top: 0; transform: scale(1.5); display: none;" />
-  </div>
+<div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
+  <img id="abr" src="images/Abr.gif" style="width: 160px; cursor: pointer; outline: none; border: none;" />
 </div>
 
 <p>
@@ -222,7 +219,7 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
 <p> El Tercero desciende con paso firme y silbido constante; su andar levanta hojas, zarandea las almas y marca el inicio de la escasez.</p>
 
 <div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
-<img id="dic" src="images/Dic.gif" style="width: 180px; margin-top: 10px; cursor: pointer;" />
+<img id="dic" src="images/Dic.gif" style="width: 180px; margin-top: 10px; cursor: pointer;  outline: none; border: none" />
 </div>
 
 <p>Decidme, viajera:
@@ -314,40 +311,27 @@ El Segundo se presenta como un respiro en medio de la tempestad, inesperado, com
   });
 </script>
 
-
-<script>
-  const dicImg = document.getElementById("dic");
-
-  dicImg.addEventListener("click", () => {
-    dicImg.src = "images/Dic1.gif"; // animación
-    setTimeout(() => {
-      dicImg.src = "images/Dic.gif"; // vuelve al original
-    }, 2000);
-  });
-</script>
-
 <script>
   const abr = document.getElementById("abr");
-  const abrAnim = document.getElementById("abrAnim");
-  let alternarAbr = false;
-  let animandoAbr = false;
+  const abrAlternativas = ["images/Abr1.gif", "images/Abr2.gif", "images/Abr3.gif"];
+  let abrCambiando = false;
 
   abr.addEventListener("click", () => {
-    if (animandoAbr) return;
-    animandoAbr = true;
+    if (abrCambiando) return;
+    abrCambiando = true;
 
-    const gif = alternarAbr ? "images/Abr1.gif" : "images/Abr2.gif";
-    const duracion = alternarAbr ? 1600 : 1600;
-    abrAnim.src = gif;
-    abrAnim.style.display = "block";
-    alternarAbr = !alternarAbr;
+    // Elegir una alternativa aleatoria
+    const gifAleatorio = abrAlternativas[Math.floor(Math.random() * abrAlternativas.length)];
+
+    abr.src = gifAleatorio;
 
     setTimeout(() => {
-      abrAnim.style.display = "none";
-      animandoAbr = false;
-    }, duracion);
+      abr.src = "images/Abr.gif";
+      abrCambiando = false;
+    }, 1500); // Ajusta si los gif duran más o menos
   });
 </script>
+
 
 
 </body>
