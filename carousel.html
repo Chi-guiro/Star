@@ -111,13 +111,21 @@
   let currentIndex = 0;
 
   function updateCarousel() {
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  slides.forEach((slide, index) => {
+    slide.classList.toggle('middle', index === currentIndex + 1);
+  });
 
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('middle', index === currentIndex + 1);
-    });
-  }
+  const middleSlide = slides[currentIndex + 1];
+  if (!middleSlide) return;
+
+  const container = track.parentElement;
+  const containerCenter = container.offsetWidth / 2;
+  const slideCenter = middleSlide.offsetLeft + middleSlide.offsetWidth / 2;
+
+  const offset = slideCenter - containerCenter;
+
+  track.style.transform = `translateX(-${offset}px)`;
+}
 
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
