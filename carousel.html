@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      background: #ffe6f0;;
+      background: #ffe6f0;
     }
 
     .carousel-container {
@@ -41,7 +41,6 @@
       height: 300px;
       width: auto;
       object-fit: contain;
-      border-radius:0px;
     }
 
     .carousel-slide.middle {
@@ -111,21 +110,24 @@
   let currentIndex = 0;
 
   function updateCarousel() {
-  slides.forEach((slide, index) => {
-    slide.classList.toggle('middle', index === currentIndex + 1);
-  });
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('middle', index === currentIndex);
+    });
 
-  const middleSlide = slides[currentIndex + 1];
-  if (!middleSlide) return;
+    const container = track.parentElement;
+    const activeSlide = slides[currentIndex];
+    const containerRect = container.getBoundingClientRect();
+    const slideRect = activeSlide.getBoundingClientRect();
 
-  const container = track.parentElement;
-  const containerCenter = container.offsetWidth / 2;
-  const slideCenter = middleSlide.offsetLeft + middleSlide.offsetWidth / 2;
+    // Diferencia entre el centro del slide y el centro del contenedor
+    const offset = (slideRect.left + slideRect.width / 2) - (containerRect.left + containerRect.width / 2);
 
-  const offset = slideCenter - containerCenter;
+    // Ajusta el scroll visualmente mediante transform
+    const currentTransform = track.style.transform.match(/-?\d+\.?\d*/);
+    const currentOffset = currentTransform ? parseFloat(currentTransform[0]) : 0;
 
-  track.style.transform = `translateX(-${offset}px)`;
-}
+    track.style.transform = `translateX(${currentOffset - offset}px)`;
+  }
 
   prevBtn.addEventListener('click', () => {
     if (currentIndex > 0) {
@@ -135,14 +137,14 @@
   });
 
   nextBtn.addEventListener('click', () => {
-    if (currentIndex < slides.length - 3) {
+    if (currentIndex < slides.length - 1) {
       currentIndex++;
       updateCarousel();
     }
   });
 
   window.addEventListener('resize', updateCarousel);
-  updateCarousel();
+  window.addEventListener('load', updateCarousel); // asegúrate de centrar bien al cargar
 </script>
 
 </body>
